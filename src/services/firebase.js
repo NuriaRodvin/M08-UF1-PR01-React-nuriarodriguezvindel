@@ -1,7 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, setDoc, doc } from "firebase/firestore";
-import { deleteDoc } from "firebase/firestore"; // Asegúrate de agregar esta importación
-
+import { getFirestore, collection, getDocs, setDoc, doc, deleteDoc } from "firebase/firestore"; // Asegúrate de importar deleteDoc
 
 // Tu configuración de Firebase
 const firebaseConfig = {
@@ -27,8 +25,6 @@ export const getFavoritePlayers = async () => {
 };
 
 // Función para agregar un jugador favorito a Firebase
-// firebase.js
-
 export const addFavoritePlayer = async (player) => {
     const docRef = doc(db, "favorites", player.name);  // Aquí usamos el nombre como ID
     await setDoc(docRef, player);
@@ -38,9 +34,7 @@ export const addFavoritePlayer = async (player) => {
 export const removeFavoritePlayer = async (playerId) => {
     const playerRef = doc(db, "favorites", playerId); // Usa el id del jugador como referencia
     await deleteDoc(playerRef); // Elimina el documento de Firebase
-  };
-  
-
+};
 
 export { db };
 
